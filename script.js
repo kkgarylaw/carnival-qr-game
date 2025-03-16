@@ -20,13 +20,12 @@ function updateProgress() {
     if (scannedBooths.length === 6) {
         voucherDisplay.style.display = 'block';
         progressDisplay.style.display = 'none';
-        sendCompletionData(); // Call the function to send data
+        sendCompletionData();
     }
 }
 
 function sendCompletionData() {
-    const webAppUrl = 'https://script.google.com/macros/s/AKfycbydq1DPGMlK7_FFcmIfiRy-nNn8iw90qklXvaMD82_nwr8rqtiGrBCYv-ZGTRynvISl/exec'; // Replace with your Web App URL
-    const userId = 'user_' + Math.random().toString(36).substring(2, 15); // Generate a unique user ID, or use a more robust method.
+    const webAppUrl = 'YOUR_WEB_APP_URL'; // Replace with your Web App URL
     const completed = true;
 
     fetch(webAppUrl, {
@@ -35,7 +34,7 @@ function sendCompletionData() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ userId: userId, completed: completed })
+        body: JSON.stringify({ completed: completed }) // Only send the completed flag
     })
     .then(response => response.json())
     .then(data => {
